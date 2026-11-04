@@ -30,6 +30,7 @@ options:
   otbr_log_level: notice
   firewall: true
   nat64: false
+  border_routing: true
   beta: false
 ports:
   8080/tcp: null
@@ -46,5 +47,6 @@ schema:
   otbr_log_level: list(debug|info|notice|warning|error|critical|alert|emergency)
   firewall: bool
   nat64: bool
+  border_routing: bool
   beta: bool?
 startup: services

@@ -20,3 +20,11 @@ ot-ctl mdns enable
 # To avoid asymmetric link quality the TX power from the controller should not
 # exceed that of what other Thread routers devices typically use.
 ot-ctl txpower 6
+
+if bashio::config.false 'border_routing'; then
+    bashio::log.info \
+        "Border routing disabled by configuration: stopping the Backbone Router" \
+        "and the Router Advertisements on the infrastructure network."
+    ot-ctl bbr disable
+    ot-ctl br disable
+fi
