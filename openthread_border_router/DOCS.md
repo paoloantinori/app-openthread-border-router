@@ -69,6 +69,8 @@ App configuration:
 | firewall           | Enable OpenThread Border Router firewall to block unnecessary traffic             |
 | nat64              | Enable NAT64 to allow Thread devices accessing IPv4 addresses                     |
 | border_routing     | Disable on LANs that already have an IPv6 router (stops RAs and Backbone Router)  |
+| network_device     | IP address and port to connect to a network-based RCP (see below)                 |
+| beta               | Enable beta mode to run a newer, experimental version of OpenThread Border Router |
 
 > [!WARNING]
 > The OTBR expects the RCP connected radio to be on a reliable link such as

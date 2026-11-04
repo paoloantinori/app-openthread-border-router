@@ -24,10 +24,7 @@ while true; do
     if ot-ctl br state 2>/dev/null | grep -q running; then
         bashio::log.warning \
             "Border routing is running again (agent re-init): disabling it."
-        # otbr_cli logs loudly when the CLI refuses, so a permanently
-        # failing re-assert stays visible instead of silently doing nothing.
-        otbr_cli bbr disable || true
-        otbr_cli br disable || true
+        otbr_disable_border_routing
     fi
     sleep 60
 done

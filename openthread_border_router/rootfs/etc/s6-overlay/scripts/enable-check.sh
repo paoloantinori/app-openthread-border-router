@@ -1,6 +1,16 @@
 #!/usr/bin/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
+# Validate option combinations before any service starts
+# ==============================================================================
+
+if bashio::config.true 'nat64' && bashio::config.false 'border_routing'; then
+    bashio::exit.nok \
+        "The options nat64 and border_routing cannot be combined: the NAT64" \
+        "prefix is published into the Thread network by border routing."
+fi
+
+# ==============================================================================
 # Select OTBR version and handle automatic beta disable/promotion
 # ==============================================================================
 

@@ -44,3 +44,12 @@ otbr_cli() {
         return 1
     fi
 }
+
+# Disables the Backbone Router and the Border Routing Manager. Used by both
+# the otbr-agent-configure oneshot at startup and the otbr-border-routing
+# enforcer, so boot-time and steady-state enforcement cannot drift apart.
+# Failures are logged (by otbr_cli) but never fatal: the enforcer retries.
+otbr_disable_border_routing() {
+    otbr_cli bbr disable || true
+    otbr_cli br disable || true
+}
