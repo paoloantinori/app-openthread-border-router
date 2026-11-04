@@ -33,15 +33,18 @@ configuration:
     name: NAT64
     description: >-
       Enable IPv6 to IPv4 network address translation. This allows Thread
-      devices to communicate with devices on the Internet.
+      devices to communicate with devices on the Internet. Requires border
+      routing to be enabled.
   border_routing:
     name: Border routing
     description: >-
       Route traffic between the Thread network and the infrastructure network
       and advertise Thread prefixes with Router Advertisements on the LAN.
       Disable this when another IPv6 router already serves the LAN: the app
-      then stops the Backbone Router and its Router Advertisements, while the
-      Thread network and Matter devices keep working locally.
+      then stops the Backbone Router and its Router Advertisements. The Thread
+      network keeps running, but Thread devices cannot reach the Internet and
+      their DNS-SD services are not advertised on the LAN. Cannot be combined
+      with NAT64.
   beta:
     name: Beta
     description: >-

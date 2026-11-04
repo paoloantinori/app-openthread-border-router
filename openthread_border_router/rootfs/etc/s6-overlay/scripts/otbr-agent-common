@@ -31,3 +31,16 @@ otbr_log_level_to_int() {
     esac
 }
 
+
+# Runs ot-ctl and returns non-zero unless the CLI answers Done. OpenThread
+# prints CLI errors on stdout while ot-ctl still exits 0, and ot-ctl
+# backslash-escapes spaces inside a single argv, so the command must be
+# passed as separate arguments (otbr_cli bbr disable, never one string).
+otbr_cli() {
+    local output
+    output="$(ot-ctl "${@}" 2>&1)"
+    if ! grep -q '^Done' <<< "${output}"; then
+        bashio::log.error "ot-ctl ${*} failed: ${output}"
+        return 1
+    fi
+}
