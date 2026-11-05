@@ -42,9 +42,11 @@ configuration:
       and advertise Thread prefixes with Router Advertisements on the LAN.
       Disable this when another IPv6 router already serves the LAN: the app
       then stops the Backbone Router and its Router Advertisements. The Thread
-      network keeps running, but Thread devices cannot reach the Internet and
-      their DNS-SD services are not advertised on the LAN. Cannot be combined
-      with NAT64.
+      network keeps running, but Thread devices cannot reach the Internet,
+      their DNS-SD services are not advertised on the LAN, and they lose the
+      addresses the Matter Server reaches them at, so they become unavailable
+      in Home Assistant within about an hour and recover a few minutes after
+      this option is turned back on. Cannot be combined with NAT64.
   beta:
     name: Beta
     description: >-
