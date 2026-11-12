@@ -1,5 +1,5 @@
 ---
-version: dev
+version: "3.4.1-ra.1"
 breaking_versions: [3.0.0]
 slug: openthread_border_router
 name: OpenThread Border Router
@@ -21,7 +21,7 @@ privileged:
   - NET_RAW
 devices:
   - /dev/net/tun
-image: ghcr.io/home-assistant/app-openthread-border-router
+image: ghcr.io/paoloantinori/aarch64-addon-openthread_border_router
 init: false
 log_format: timestamp
 options:
